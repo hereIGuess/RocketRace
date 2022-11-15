@@ -2,6 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	ofSetRectMode(OF_RECTMODE_CENTER);
+
 	for (int x = 0; x < asteroidsOnScreen; x++) {
 		Asteroid asteroid = Asteroid();
 		asteroids.push_back(asteroid);
@@ -14,9 +16,9 @@ void ofApp::update(){
 	//player2.move();
 
 	for (int a = 0; a < asteroids.size(); a++) {
-		asteroids[a].move();
-
 		player1.checkCollision(asteroids[a]);
+
+		asteroids[a].move();
 
 		if (asteroids[a].checkForDeletion()) {
 			asteroids.erase(asteroids.begin() + a);
