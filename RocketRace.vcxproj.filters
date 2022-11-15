@@ -23,7 +23,7 @@
     <ClInclude Include="src\score.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="asteroid.h">
+    <ClInclude Include="src\asteroid.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

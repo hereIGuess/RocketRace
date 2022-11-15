@@ -9,15 +9,15 @@ private:
 	//needs direction
 	//needs collision
 	ofVec2f spawnPosition;
-	ofVec2f position;
+
 
 public:
+	ofVec2f position;
+	int size = 10;
+
 	Asteroid() {
-		this->spawnPosition = ofVec2f(0, 0);
-	}
-
-	void collision() {
-
+		this->spawnPosition = ofVec2f(125, 40);
+		this->position = spawnPosition;
 	}
 
 	void move() {
@@ -25,6 +25,6 @@ public:
 	}
 
 	void render() {
-		ofDrawRectangle(spawnPosition.x, spawnPosition.y, 10, 10);
+		ofDrawRectangle(spawnPosition.x, spawnPosition.y, size, size);
 	}
 };

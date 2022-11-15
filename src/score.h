@@ -9,8 +9,8 @@ private:
 	//ofTrueTypeFont myFont;
 
 public:
+	//turn into setter
 	ofVec2f position;
-	//Score() = default();
 
 	Score(int score, ofVec2f position) {
 		this->score = score;

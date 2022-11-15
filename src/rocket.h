@@ -1,6 +1,6 @@
 #pragma once
-#include <utility>
 
+#include "asteroid.h"
 #include "ofGraphics.h"
 #include "score.h"
 
@@ -8,8 +8,7 @@ class Rocket {
 private:
 	enum class Direction { up, down, still };
 	Direction movement;
-	int size;
-	int yPos;
+
 	bool moving;
 	int up;
 	int down;
@@ -18,6 +17,11 @@ private:
 	//image sprite;
 
 public:
+	//turn these into getters
+	int size;
+	//int yPos;
+	ofVec2f position; //make a point
+
 	//spawn position is a 2D vector incase I want to add left and right movement
 	Rocket(int size, int upButton, int downButton, ofVec2f spawn) {
 		this->size = size;
@@ -25,7 +29,7 @@ public:
 		this->up = upButton;
 		this->down = downButton;
 		this->spawnPosition = spawn;
-		this->yPos = spawnPosition.y;
+		this->position = spawnPosition;
 		this->movement = Direction::still;
 		this->score.position = ofVec2f(spawnPosition.x + 5, spawnPosition.y + 35);
 	}
@@ -33,21 +37,34 @@ public:
 	void move() {
 		if (movement == Direction::still) return;
 
-		if (movement == Direction::down && yPos < spawnPosition.y) {
-			yPos += 5;
+		if (movement == Direction::down && position.y < spawnPosition.y) {
+			position.y += 5;
 		}
-		else if (movement == Direction::up && yPos >= 0) {
+		else if (movement == Direction::up && position.y >= 0) {
 			//put inside here because otherwise the player could reach 0
 			//then move downwards and still get a point (which isn't right)
-			if (yPos == 0) increaseScore();
+			if (position.y == 0) increaseScore();
 
-			yPos -= 5;
+			position.y -= 5;
 		}
 	}
 
 	void increaseScore() {
-		yPos = spawnPosition.y;
+		respawnPlayer();
 		score.setScore();
+	}
+
+	void respawnPlayer() {
+		position.y = spawnPosition.y;
+	}
+
+	void checkCollision(Asteroid asteroid) {
+		if (asteroid.position.x + asteroid.size / 2 <= position.x + size / 2 &&
+			asteroid.position.x - asteroid.size / 2 >= position.x - size / 2 &&
+			asteroid.position.y + asteroid.size / 2 <= position.y + size / 2 &&
+			asteroid.position.y - asteroid.size / 2 >= position.y - size / 2) {
+			respawnPlayer();
+		}
 	}
 
 	void checkMoving(int key) {
@@ -71,7 +88,7 @@ public:
 	}
 
 	void render() {
-		ofDrawRectangle(spawnPosition.x, yPos, size, size);
+		ofDrawRectangle(position.x, position.y, size, size);
 
 		score.render();
 	}

@@ -33,4 +33,6 @@ class ofApp : public ofBaseApp{
 		//Rocket player2 = Rocket(20, player2UpButton, player2DownButton, ofVec2f(370, 500 - 40));
 
 		Asteroid asteroid = Asteroid();
+
+		ofRectMode(CENTER);
 };
