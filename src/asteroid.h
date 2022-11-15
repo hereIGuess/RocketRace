@@ -10,6 +10,7 @@ private:
 	Point position;
 	int randomYPos;
 	ofVec2f movement;
+	int deletionPoint;
 
 public:
 	int size = 10;
@@ -42,6 +43,16 @@ public:
 
 	void move() {
 		position.x += speed;
+	}
+
+	bool checkForDeletion() {
+		if (direction == -1) {
+			if (position.x < 0 - size * 2) return true;
+		} else if (direction == 1) {
+			if (position.x > ofGetWindowWidth() + size * 2) return true;
+		}
+
+		return false;
 	}
 
 	void render() {
