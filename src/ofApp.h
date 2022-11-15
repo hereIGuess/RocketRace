@@ -27,6 +27,7 @@ class ofApp : public ofBaseApp{
 		int player1UpButton = 119;
 		int player1DownButton = 115;
 		Rocket player1 = Rocket(20, player1UpButton, player1DownButton, ofVec2f(120, 500 - 40));
+		//Rocket player1 = Rocket(20, player1UpButton, player1DownButton, ofVec2f(0, 0));
 
 		//int player2UpButton = 57357;
 		//int player2DownButton = 57359;
@@ -35,6 +36,4 @@ class ofApp : public ofBaseApp{
 		//Asteroid asteroid = Asteroid();
 		vector<Asteroid> asteroids;
 		const int& asteroidsOnScreen = 15;
-
-		ofRectMode(CENTER);
 };
