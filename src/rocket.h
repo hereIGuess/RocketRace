@@ -59,10 +59,12 @@ public:
 	}
 
 	void checkCollision(Asteroid asteroid) {
-		if (asteroid.position.x + asteroid.size / 2 <= position.x + size / 2 &&
-			asteroid.position.x - asteroid.size / 2 >= position.x - size / 2 &&
-			asteroid.position.y + asteroid.size / 2 <= position.y + size / 2 &&
-			asteroid.position.y - asteroid.size / 2 >= position.y - size / 2) {
+		ofVec2f asteroidPosition = asteroid.getPosition();
+
+		if (asteroidPosition.x + asteroid.size / 2 <= position.x + size / 2 &&
+			asteroidPosition.x - asteroid.size / 2 >= position.x - size / 2 &&
+			asteroidPosition.y + asteroid.size / 2 <= position.y + size / 2 &&
+			asteroidPosition.y - asteroid.size / 2 >= position.y - size / 2) {
 			respawnPlayer();
 		}
 	}

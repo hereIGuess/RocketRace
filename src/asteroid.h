@@ -4,20 +4,27 @@
 
 class Asteroid {
 private:
-	//right now just 1 asteroid
-	//needs spawn position
-	//needs direction
-	//needs collision
-	ofVec2f spawnPosition;
-
+	int direction;
+	float speed;
+	ofVec2f position;
+	int randomYPos;
 
 public:
-	ofVec2f position;
 	int size = 10;
 
+	ofVec2f getPosition() {
+		return position;
+	}
+
 	Asteroid() {
-		this->spawnPosition = ofVec2f(125, 40);
-		this->position = spawnPosition;
+		this->randomYPos = floor(ofRandom(10, 400));
+
+		if (direction == -1) {
+			this->position = ofVec2f(0, randomYPos);
+		}
+		else if (direction == 1) {
+			this->position = ofVec2f(ofGetWindowWidth() - size, randomYPos);
+		}
 	}
 
 	void move() {
@@ -25,6 +32,6 @@ public:
 	}
 
 	void render() {
-		ofDrawRectangle(spawnPosition.x, spawnPosition.y, size, size);
+		ofDrawRectangle(position.x, position.y, size, size);
 	}
 };

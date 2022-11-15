@@ -2,6 +2,10 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	for (int x = 0; x < 5; x++) {
+		Asteroid asteroid = Asteroid();
+		asteroids.push_back(asteroid);
+	}
 }
 
 //--------------------------------------------------------------
@@ -9,15 +13,19 @@ void ofApp::update(){
 	player1.move();
 	//player2.move();
 
-	player1.checkCollision(asteroid);
+	for (auto a : asteroids) {
+		player1.checkCollision(a);
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	player1.render();
-
-	asteroid.render();
 	//player2.render();
+
+	for (auto a : asteroids) {
+		a.render();
+	}
 }
 
 //--------------------------------------------------------------

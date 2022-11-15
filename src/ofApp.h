@@ -32,7 +32,8 @@ class ofApp : public ofBaseApp{
 		//int player2DownButton = 57359;
 		//Rocket player2 = Rocket(20, player2UpButton, player2DownButton, ofVec2f(370, 500 - 40));
 
-		Asteroid asteroid = Asteroid();
+		//Asteroid asteroid = Asteroid();
+		vector<Asteroid> asteroids;
 
 		ofRectMode(CENTER);
 };
