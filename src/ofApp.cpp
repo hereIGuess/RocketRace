@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	for (int x = 0; x < 10; x++) {
+	for (int x = 0; x < asteroidsOnScreen; x++) {
 		Asteroid asteroid = Asteroid();
 		asteroids.push_back(asteroid);
 	}
@@ -20,6 +20,9 @@ void ofApp::update(){
 
 		if (asteroids[a].checkForDeletion()) {
 			asteroids.erase(asteroids.begin() + a);
+
+			Asteroid asteroid = Asteroid();
+			asteroids.push_back(asteroid);
 		}
 	}
 }
