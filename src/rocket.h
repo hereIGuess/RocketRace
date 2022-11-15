@@ -59,7 +59,7 @@ public:
 	}
 
 	void checkCollision(Asteroid asteroid) {
-		ofVec2f asteroidPosition = asteroid.getPosition();
+		Point asteroidPosition = asteroid.getPosition();
 
 		if (asteroidPosition.x + asteroid.size / 2 <= position.x + size / 2 &&
 			asteroidPosition.x - asteroid.size / 2 >= position.x - size / 2 &&

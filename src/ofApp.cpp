@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	for (int x = 0; x < 5; x++) {
+	for (int x = 0; x < 1; x++) {
 		Asteroid asteroid = Asteroid();
 		asteroids.push_back(asteroid);
 	}
@@ -13,7 +13,9 @@ void ofApp::update(){
 	player1.move();
 	//player2.move();
 
-	for (auto a : asteroids) {
+	for (auto& a : asteroids) {
+		a.move();
+
 		player1.checkCollision(a);
 	}
 }

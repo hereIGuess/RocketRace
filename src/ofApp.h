@@ -35,5 +35,6 @@ class ofApp : public ofBaseApp{
 		//Asteroid asteroid = Asteroid();
 		vector<Asteroid> asteroids;
 
+
 		ofRectMode(CENTER);
 };

@@ -186,6 +186,7 @@
   <ItemGroup>
     <ClInclude Include="src\asteroid.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\point.h" />
     <ClInclude Include="src\rocket.h" />
     <ClInclude Include="src\score.h" />
   </ItemGroup>
