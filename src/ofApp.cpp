@@ -14,6 +14,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	player1.render();
+
+	asteroid.render();
 	//player2.render();
 }
 

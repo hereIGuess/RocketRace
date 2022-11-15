@@ -23,6 +23,9 @@
     <ClInclude Include="src\score.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="asteroid.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

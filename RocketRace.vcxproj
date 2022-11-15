@@ -184,6 +184,7 @@
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="asteroid.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\rocket.h" />
     <ClInclude Include="src\score.h" />
