@@ -31,10 +31,10 @@ public:
 		randomYPos = floor(ofRandom(10, 400));
 
 		if (direction == -1) {
-			position = Point{ofGetWindowWidth() - size, randomYPos};
+			position = Point{ofGetWindowWidth(), randomYPos};
 		}
 		else if (direction == 1) {
-			position = Point{ 0, randomYPos };
+			position = Point{ 0 - size, randomYPos };
 		}
 		else {
 			std::cout << "something broke";

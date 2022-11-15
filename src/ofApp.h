@@ -34,7 +34,7 @@ class ofApp : public ofBaseApp{
 
 		//Asteroid asteroid = Asteroid();
 		vector<Asteroid> asteroids;
-
+		const int& asteroidsOnScreen = 15;
 
 		ofRectMode(CENTER);
 };
