@@ -6,8 +6,8 @@ extern Point screen;
 
 class Timer {
 private:
-	//ofTimer timer;
-	int time;
+	int currentTime;
+	int timer = 120;
 	float passedTime = 0;
 
 	//could just check if time is 0 but I think a bool is easier to read
@@ -19,7 +19,7 @@ public:
 	}
 
 	Timer() {
-		time = 60;
+		currentTime = timer;
 	}
 
 	void countDown() {
@@ -28,17 +28,17 @@ public:
 		passedTime += ofGetLastFrameTime();
 
 		if (passedTime >= 1) {
-			time--;
+			currentTime--;
 			passedTime = 0;
 		}
 
-		if (time == 0) {
+		if (currentTime == 0) {
 			gameOver = true;
 			std::cout << "gameover";
 		}
 	}
 
 	void render() {
-		ofDrawRectangle(screen.x / 2, 0, 5, time * 10);
+		ofDrawRectangle(screen.x / 2 + 5, (timer - currentTime) * ofGetWindowHeight() / timer, 10,  ofGetWindowHeight() - ((timer - currentTime) * ofGetWindowHeight() / timer));
 	}
 };

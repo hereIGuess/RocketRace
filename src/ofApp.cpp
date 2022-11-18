@@ -2,7 +2,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-	ofSetRectMode(OF_RECTMODE_CENTER);
 	ofSetFrameRate(60);
 
 	for (int x = 0; x < asteroidsOnScreen; x++) {
@@ -34,6 +33,7 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
+	ofSetRectMode(OF_RECTMODE_CENTER);
 	ofSetColor(20);
 	ofDrawRectangle(screen.x / 2, screen.y / 2, screen.x, screen.y);
 
@@ -45,6 +45,7 @@ void ofApp::draw() {
 		a.render();
 	}
 
+	ofSetRectMode(OF_RECTMODE_CORNER);
 	timer.render();
 }
 
