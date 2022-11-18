@@ -26,7 +26,7 @@ public:
 		this->size = size;
 		this->up = upButton;
 		this->down = downButton;
-		this->position = { (int)screen.x / 3, (int)screen.y - size / 2 };
+		this->position = { screen.x / 4, screen.y - size / 2 };
 		this->movement = Direction::still;
 
 		this->score = Score(0, Point{ position.x - 20, position.y + 60 });
