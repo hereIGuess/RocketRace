@@ -18,7 +18,7 @@ class ofApp : public ofBaseApp{
 
 		int player1UpButton = 119;
 		int player1DownButton = 115;
-		Rocket player1 = Rocket(20, player1UpButton, player1DownButton);
+		Rocket player1 = Rocket(player1UpButton, player1DownButton);
 
 		//int player2UpButton = 57357;
 		//int player2DownButton = 57359;
