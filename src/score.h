@@ -6,14 +6,15 @@ class Score {
 private:
 	int score;
 	Point position;
-	ofTrueTypeFont myFont;
+	//ofTrueTypeFont myFont;
 
 public:
 	Score(int score, Point position) {
 		this->score = score;
-		this->position = position;
+		this->position = Point{ position.x, position.y};
 
-		//myFont.load("cour.tff", 24);
+		//could not get the font to load
+		//myFont.load("cour.tff", 24, true, true, false, 0.3, 0);
 	}
 
 	void setScore() {
@@ -21,7 +22,8 @@ public:
 	}
 	
 	void render() {
-		//ofDrawBitmapString(std::to_string(score), position.x, position.y);
+		ofDrawBitmapString(std::to_string(score), position.x, position.y);
+	
 		//myFont.drawString(std::to_string(score), position.x, position.y);
 	}
 };

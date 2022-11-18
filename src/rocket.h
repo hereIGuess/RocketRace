@@ -29,7 +29,7 @@ public:
 		this->position = { screen.x / 4, screen.y - size / 2 };
 		this->movement = Direction::still;
 
-		this->score = Score(0, Point{ position.x - 20, position.y + 60 });
+		this->score = Score(0, Point{ position.x - size / 4, position.y + size * 2});
 	}
 
 	void move() {
