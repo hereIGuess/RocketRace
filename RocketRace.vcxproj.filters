@@ -35,6 +35,9 @@
     <ClInclude Include="map.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\timer.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "rocket.h"
 #include "asteroid.h"
+#include "timer.h"
 
 class ofApp : public ofBaseApp{
 
@@ -33,4 +34,6 @@ class ofApp : public ofBaseApp{
 		//Asteroid asteroid = Asteroid();
 		vector<Asteroid> asteroids;
 		const int& asteroidsOnScreen = 15;
+
+		Timer timer = Timer();
 };

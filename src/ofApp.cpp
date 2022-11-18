@@ -1,8 +1,9 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup() {
 	ofSetRectMode(OF_RECTMODE_CENTER);
+	ofSetFrameRate(60);
 
 	for (int x = 0; x < asteroidsOnScreen; x++) {
 		Asteroid asteroid = Asteroid();
@@ -11,7 +12,9 @@ void ofApp::setup(){
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
+void ofApp::update() {
+	timer.countDown();
+
 	player1.move();
 	//player2.move();
 
@@ -30,7 +33,7 @@ void ofApp::update(){
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp::draw() {
 	ofSetColor(20);
 	ofDrawRectangle(screen.x / 2, screen.y / 2, screen.x, screen.y);
 
@@ -41,10 +44,12 @@ void ofApp::draw(){
 	for (auto a : asteroids) {
 		a.render();
 	}
+
+	timer.render();
 }
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key){
+void ofApp::keyPressed(int key) {
 	if (key == player1UpButton || key == player1DownButton) player1.direction(key);
 
 	//if (key == player2UpButton || key == player2DownButton) player2.direction(key);

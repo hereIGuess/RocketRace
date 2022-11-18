@@ -30,7 +30,7 @@ public:
 		randomYPos = floor(ofRandom(10, screen.y - 40));
 
 		if (direction == -1) {
-			position = Point{(int)screen.x + size, randomYPos};
+			position = Point{screen.x + size, randomYPos};
 		} else if (direction == 1) {
 			position = Point{ 0 - size, randomYPos };
 		}
