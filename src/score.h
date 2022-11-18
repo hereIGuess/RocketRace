@@ -13,7 +13,7 @@ public:
 		this->score = score;
 		this->position = position;
 
-		myFont.load("cour.tff", 24);
+		//myFont.load("cour.tff", 24);
 	}
 
 	void setScore() {
@@ -22,6 +22,6 @@ public:
 	
 	void render() {
 		//ofDrawBitmapString(std::to_string(score), position.x, position.y);
-		myFont.drawString(std::to_string(score), position.x, position.y);
+		//myFont.drawString(std::to_string(score), position.x, position.y);
 	}
 };

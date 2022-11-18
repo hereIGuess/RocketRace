@@ -192,6 +192,7 @@
     <ClInclude Include="src\rocket.h" />
     <ClInclude Include="src\score.h" />
     <ClInclude Include="src\timer.h" />
+    <ClInclude Include="src\title.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

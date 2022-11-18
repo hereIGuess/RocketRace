@@ -12,47 +12,64 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
-	if (timer.getGameState()) return;
+	if (titleScreen.getTitle()) {
+		titleScreen.update();
+	} else if (!titleScreen.getTitle()) {
+		if (timer.getGameState()) {
+			titleScreen = Title();
+			return;
+		}
 
-	timer.countDown();
+		timer.countDown();
 
-	player1.move();
-	//player2.move();
+		player1.move();
+		//player2.move();
 
-	for (int a = 0; a < asteroids.size(); a++) {
-		player1.checkCollision(asteroids[a]);
+		for (int a = 0; a < asteroids.size(); a++) {
+			player1.checkCollision(asteroids[a]);
 
-		asteroids[a].move();
+			asteroids[a].move();
 
-		if (asteroids[a].checkForDeletion()) {
-			asteroids.erase(asteroids.begin() + a);
+			if (asteroids[a].checkForDeletion()) {
+				asteroids.erase(asteroids.begin() + a);
 
-			Asteroid asteroid = Asteroid();
-			asteroids.push_back(asteroid);
+				Asteroid asteroid = Asteroid();
+				asteroids.push_back(asteroid);
+			}
 		}
 	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	ofSetRectMode(OF_RECTMODE_CENTER);
-	ofSetColor(20);
-	ofDrawRectangle(screen.x / 2, screen.y / 2, screen.x, screen.y);
 
-	ofSetColor(255);
-	player1.render();
-	//player2.render();
-
-	for (auto a : asteroids) {
-		a.render();
+	if (titleScreen.getTitle()) {
+		titleScreen.render();
 	}
+	else if (!titleScreen.getTitle()) {
+		ofSetRectMode(OF_RECTMODE_CENTER);
+		ofSetColor(20);
+		ofDrawRectangle(screen.x / 2, screen.y / 2, screen.x, screen.y);
 
-	ofSetRectMode(OF_RECTMODE_CORNER);
-	timer.render();
+		ofSetColor(255);
+		player1.render();
+		//player2.render();
+
+		for (auto a : asteroids) {
+			a.render();
+		}
+
+		ofSetRectMode(OF_RECTMODE_CORNER);
+		timer.render();
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
+	if (titleScreen.getTitle()) {
+		titleScreen.checkGameStart(key);
+	}
+
 	if (key == player1UpButton || key == player1DownButton) player1.direction(key);
 
 	//if (key == player2UpButton || key == player2DownButton) player2.direction(key);
@@ -62,49 +79,4 @@ void ofApp::keyPressed(int key) {
 void ofApp::keyReleased(int key){
 	player1.checkMoving(key);
 	//player2.checkMoving(key);
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
 }
