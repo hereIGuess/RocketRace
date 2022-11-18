@@ -7,6 +7,9 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -27,6 +30,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\point.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="map.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

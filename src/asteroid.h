@@ -3,6 +3,8 @@
 #include "ofVec2f.h"
 #include "point.h"
 
+extern ofVec2f screen;
+
 class Asteroid {
 private:
 	int direction;
@@ -28,10 +30,10 @@ public:
 
 		speed *= direction;
 
-		randomYPos = floor(ofRandom(10, 400));
+		randomYPos = floor(ofRandom(10, screen.y - 40));
 
 		if (direction == -1) {
-			position = Point{ofGetWindowWidth(), randomYPos};
+			position = Point{(int)screen.x + size, randomYPos};
 		}
 		else if (direction == 1) {
 			position = Point{ 0 - size, randomYPos };
@@ -49,7 +51,7 @@ public:
 		if (direction == -1) {
 			if (position.x < 0 - size * 2) return true;
 		} else if (direction == 1) {
-			if (position.x > ofGetWindowWidth() + size * 2) return true;
+			if (position.x > screen.x + size * 2) return true;
 		}
 
 		return false;

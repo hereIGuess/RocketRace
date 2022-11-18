@@ -5,8 +5,7 @@
 class Score {
 private:
 	int score;
-
-	//ofTrueTypeFont myFont;
+	ofTrueTypeFont myFont;
 
 public:
 	//turn into setter
@@ -15,8 +14,8 @@ public:
 	Score(int score, ofVec2f position) {
 		this->score = score;
 		this->position = position;
-		//myFont.load("arial.ttf", 32);
-		//myFont.loadFont("arial.ttf", 32);
+
+		myFont.load("cour.tff", 24);
 	}
 
 	void setScore() {
@@ -24,7 +23,7 @@ public:
 	}
 	
 	void render() {
-		ofDrawBitmapString(std::to_string(score), position.x, position.y);
-		//myFont.drawString(std::to_string(score), position.x, position.y);
+		//ofDrawBitmapString(std::to_string(score), position.x, position.y);
+		myFont.drawString(std::to_string(score), position.x, position.y);
 	}
 };

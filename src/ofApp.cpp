@@ -31,6 +31,10 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	ofSetColor(20);
+	ofDrawRectangle(screen.x / 2, screen.y / 2, screen.x, screen.y);
+
+	ofSetColor(255);
 	player1.render();
 	//player2.render();
 

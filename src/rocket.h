@@ -4,6 +4,8 @@
 #include "ofGraphics.h"
 #include "score.h"
 
+extern ofVec2f screen;
+
 class Rocket {
 private:
 	enum class Direction { up, down, still };
@@ -11,7 +13,6 @@ private:
 
 	int up;
 	int down;
-	ofVec2f spawnPosition; //make a point
 	Score score = Score(0, ofVec2f(0, 0));
 	//image sprite;
 
@@ -21,27 +22,27 @@ public:
 	//int yPos;
 	ofVec2f position; //make a point
 
-	//spawn position is a 2D vector incase I want to add left and right movement
-	Rocket(int size, int upButton, int downButton, ofVec2f spawn) {
+	Rocket(int size, int upButton, int downButton) {
 		this->size = size;
 		this->up = upButton;
 		this->down = downButton;
-		this->spawnPosition = spawn;
-		this->position = spawnPosition;
+		this->position = ofVec2f(screen.x / 3, screen.y - size / 2);
 		this->movement = Direction::still;
-		this->score.position = ofVec2f(spawnPosition.x, spawnPosition.y + 35);
+
+		//instead of rocket moving score, move score according to rocket position
+		//this->score.position = ofVec2f(spawnPosition.x, spawnPosition.y + 35);
 	}
 
 	void move() {
 		if (movement == Direction::still) return;
 
-		if (movement == Direction::down && position.y <= spawnPosition.y + size / 2) {
+		if (movement == Direction::down && position.y <= screen.y - size) {
 			position.y += 5;
 		}
-		else if (movement == Direction::up && position.y >= 0 - size / 2) {
-			//put inside here because otherwise the player could reach 0
+		else if (movement == Direction::up && position.y >= size / 2) {
+			//put inside here because otherwise the player could reach top
 			//then move downwards and still get a point (which isn't right)
-			if (position.y == 0) increaseScore();
+			if (position.y == size / 2) increaseScore();
 
 			position.y -= 5;
 		}
@@ -53,7 +54,7 @@ public:
 	}
 
 	void respawnPlayer() {
-		position.y = spawnPosition.y;
+		position.y = screen.y - size / 2;
 	}
 
 	void checkCollision(Asteroid asteroid) {
