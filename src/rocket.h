@@ -4,7 +4,7 @@
 #include "ofGraphics.h"
 #include "score.h"
 
-extern ofVec2f screen;
+extern Point screen;
 
 class Rocket {
 private:
@@ -13,24 +13,23 @@ private:
 
 	int up;
 	int down;
-	Score score = Score(0, ofVec2f(0, 0));
+	Score score = Score(0, Point{0, 0});
 	//image sprite;
 
 public:
 	//turn these into getters
 	int size;
 	//int yPos;
-	ofVec2f position; //make a point
+	Point position;
 
 	Rocket(int size, int upButton, int downButton) {
 		this->size = size;
 		this->up = upButton;
 		this->down = downButton;
-		this->position = ofVec2f(screen.x / 3, screen.y - size / 2);
+		this->position = { (int)screen.x / 3, (int)screen.y - size / 2 };
 		this->movement = Direction::still;
 
-		//instead of rocket moving score, move score according to rocket position
-		//this->score.position = ofVec2f(spawnPosition.x, spawnPosition.y + 35);
+		this->score = Score(0, Point{ position.x - 20, position.y + 60 });
 	}
 
 	void move() {

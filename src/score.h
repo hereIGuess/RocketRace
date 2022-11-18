@@ -1,17 +1,15 @@
 #pragma once
 #include "ofTrueTypeFont.h"
-#include "ofVec2f.h"
+#include "point.h"
 
 class Score {
 private:
 	int score;
+	Point position;
 	ofTrueTypeFont myFont;
 
 public:
-	//turn into setter
-	ofVec2f position;
-
-	Score(int score, ofVec2f position) {
+	Score(int score, Point position) {
 		this->score = score;
 		this->position = position;
 

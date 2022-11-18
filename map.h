@@ -1,5 +1,5 @@
 #pragma once
-#include "ofVec2f.h"
+#include "src/point.h"
 
-//changed variable name from map to screen because it broke
-extern ofVec2f screen;
+//changed variable name from map to screen because otherwise it broke
+extern Point screen;
