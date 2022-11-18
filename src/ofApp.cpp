@@ -12,6 +12,8 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
+	if (timer.getGameState()) return;
+
 	timer.countDown();
 
 	player1.move();
