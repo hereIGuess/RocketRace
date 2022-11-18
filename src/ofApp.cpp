@@ -14,6 +14,8 @@ void ofApp::setup() {
 void ofApp::update() {
 	if (titleScreen.getTitle()) {
 		titleScreen.update();
+
+		winner = Winner(player1.getScore());
 	} else if (!titleScreen.getTitle()) {
 		if (timer.getGameState()) {
 			titleScreen = Title();
@@ -45,6 +47,8 @@ void ofApp::draw() {
 
 	if (titleScreen.getTitle()) {
 		titleScreen.render();
+
+		winner.render();
 	}
 	else if (!titleScreen.getTitle()) {
 		ofSetRectMode(OF_RECTMODE_CENTER);

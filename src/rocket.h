@@ -22,6 +22,10 @@ public:
 	//int yPos;
 	Point position;
 
+	Score getScore() {
+		return score;
+	}
+
 	Rocket(int size, int upButton, int downButton) {
 		this->size = size;
 		this->up = upButton;

@@ -41,6 +41,9 @@
     <ClInclude Include="src\title.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\winner.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
