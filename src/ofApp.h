@@ -5,6 +5,7 @@
 #include "asteroid.h"
 #include "timer.h"
 #include "title.h"
+#include "winner.h"
 
 class ofApp : public ofBaseApp{
 
@@ -29,4 +30,6 @@ class ofApp : public ofBaseApp{
 		Timer timer = Timer();
 
 		Title titleScreen = Title();
+
+		Winner winner = Winner(player1.getScore());
 };

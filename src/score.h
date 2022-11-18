@@ -1,5 +1,5 @@
 #pragma once
-#include "ofTrueTypeFont.h"
+//#include "ofTrueTypeFont.h"
 #include "point.h"
 
 class Score {
@@ -9,6 +9,14 @@ private:
 	//ofTrueTypeFont myFont;
 
 public:
+	Point getPosition() {
+		return position;
+	}
+
+	int getScore() {
+		return score;
+	}
+
 	Score(int score, Point position) {
 		this->score = score;
 		this->position = Point{ position.x, position.y};
