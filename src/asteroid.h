@@ -1,9 +1,8 @@
 #pragma once
 #include "ofGraphics.h"
-#include "ofVec2f.h"
 #include "point.h"
 
-extern ofVec2f screen;
+extern Point screen;
 
 class Asteroid {
 private:
@@ -11,8 +10,6 @@ private:
 	int speed;
 	Point position;
 	int randomYPos;
-	ofVec2f movement;
-	int deletionPoint;
 
 public:
 	int size = 10;
@@ -34,12 +31,8 @@ public:
 
 		if (direction == -1) {
 			position = Point{(int)screen.x + size, randomYPos};
-		}
-		else if (direction == 1) {
+		} else if (direction == 1) {
 			position = Point{ 0 - size, randomYPos };
-		}
-		else {
-			std::cout << "something broke";
 		}
 	}
 
