@@ -10,6 +10,7 @@ private:
 	int speed;
 	Point position;
 	int randomYPos;
+	ofImage meteor;
 
 public:
 	int size = 10;
@@ -19,6 +20,8 @@ public:
 	}
 
 	Asteroid() {
+		meteor.load("Images/meteor.png");
+
 		do {
 			direction = floor(ofRandom(-1, 2));
 		} while (direction == 0);
@@ -51,6 +54,7 @@ public:
 	}
 
 	void render() {
-		ofDrawRectangle(position.x, position.y, size, size);
+		meteor.draw(position.x, position.y);
+		//ofDrawRectangle(position.x, position.y, size, size);
 	}
 };

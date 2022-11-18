@@ -10,6 +10,7 @@ class Rocket {
 private:
 	enum class Direction { up, down, still };
 	Direction movement;
+	ofImage ship;
 
 	int up;
 	int down;
@@ -18,7 +19,7 @@ private:
 
 public:
 	//turn these into getters
-	int size;
+	int size = 15;
 	//int yPos;
 	Point position;
 
@@ -26,12 +27,13 @@ public:
 		return score;
 	}
 
-	Rocket(int size, int upButton, int downButton) {
-		this->size = size;
+	Rocket(int upButton, int downButton) {
+		//this->size = size;
 		this->up = upButton;
 		this->down = downButton;
 		this->position = { screen.x / 4, screen.y - size / 2 };
 		this->movement = Direction::still;
+		ship.load("Images/spaceship.png");
 
 		this->score = Score(0, Point{ position.x - size / 4, position.y + size * 2});
 	}
@@ -45,7 +47,7 @@ public:
 		else if (movement == Direction::up && position.y >= size / 2) {
 			//put inside here because otherwise the player could reach top
 			//then move downwards and still get a point (which isn't right)
-			if (position.y == size / 2) increaseScore();
+			if (position.y <= size / 2 + 1) increaseScore();
 
 			position.y -= 5;
 		}
@@ -88,7 +90,8 @@ public:
 	}
 
 	void render() {
-		ofDrawRectangle(position.x, position.y, size, size);
+		ship.draw(position.x, position.y);
+		//ofDrawRectangle(position.x, position.y, size, size);
 
 		score.render();
 	}
