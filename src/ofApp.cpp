@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
 	ofSetFrameRate(60);
+	ofSetRectMode(OF_RECTMODE_CENTER);
 }
 
 //--------------------------------------------------------------
@@ -39,7 +40,6 @@ void ofApp::draw() {
 		titleScreen.render();
 	}
 	else if (!titleScreen.getTitle()) {
-		ofSetRectMode(OF_RECTMODE_CENTER);
 		ofSetColor(20);
 		ofDrawRectangle(screen.x / 2, screen.y / 2, screen.x, screen.y);
 
@@ -54,6 +54,7 @@ void ofApp::draw() {
 		ofSetRectMode(OF_RECTMODE_CORNER);
 		timer.render();
 
+		ofSetRectMode(OF_RECTMODE_CENTER);
 		if (timer.getGameState()) {
 			winner.render();
 		}

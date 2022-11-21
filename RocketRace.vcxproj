@@ -184,6 +184,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\title.cpp" />
+    <ClCompile Include="src\winner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="map.h" />

@@ -35,21 +35,27 @@ bool Title::checkGameStart(int key) {
 }
 
 void Title::render() {
-	ofSetColor(255);
-
 	//draw title
+	ofSetColor(255);
 	ofDrawBitmapString("ROCKET RACE", ofGetWindowWidth() / 2 - 50, 50);
 
 	//PLAYER 1'S SPACESHIP:
 	ofColor p1ButtonColor;
 	ofColor p1ButtonTextColor;
 	std::string p1ButtonText;
-	std::string p1Controls = "CONTROLS: W and S";
+
+	std::string p1Text = "PLAYER 1";
+	std::string p1Controls = "CONTROLS: W & S";
+	ofRectangle p1Positioning = ofRectangle(ofGetWindowWidth() / 4, ofGetWindowHeight() / 2 - p1Image.getHeight() / 2, p1Image.getWidth() + 70, p1Image.getHeight() * 2);
+
+	ofSetColor(80);
+	ofDrawRectangle(p1Positioning);
 
 	//draw spaceship graphic and text
-	ofDrawBitmapString("PLAYER 1", ofGetWindowWidth() / 4 - p1Image.getWidth() / 3, p1Image.getHeight() + 10);
-	p1Image.draw(ofGetWindowWidth() / 4 - p1Image.getWidth() / 2, p1Image.getHeight() + 20);
-	ofDrawBitmapString(p1Controls, ofGetWindowWidth() / 4 - p1Controls.size() * 4, p1Image.getHeight() * 2 + 40);
+	ofSetColor(255);
+	ofDrawBitmapString(p1Text, p1Positioning.x - p1Text.size() * 4, p1Positioning.y - p1Positioning.getHeight() / 2 + 20);
+	ofDrawBitmapString(p1Controls, p1Positioning.x - p1Controls.size() * 4, p1Positioning.y - p1Positioning.getHeight() / 2 + 40);
+	p1Image.draw(p1Positioning.x, p1Positioning.y);
 
 	//decide button's colours and text
 	if (p1Ready) {
@@ -64,23 +70,29 @@ void Title::render() {
 
 	//draw button
 	ofSetColor(p1ButtonColor);
-	ofDrawRectangle(ofGetWindowWidth() / 4 - p1Image.getWidth() / 2, p1Image.getHeight() * 2 + 50, p1Image.getWidth(), 30);
+	ofDrawRectangle(p1Positioning.x, p1Positioning.y + p1Positioning.height / 3 + 10, p1Image.getWidth(), 30);
 	ofSetColor(p1ButtonTextColor);
-	ofDrawBitmapString(p1ButtonText, ofGetWindowWidth() / 4 - p1ButtonText.size() * 4, p1Image.getHeight() * 2 + 70);
+	ofDrawBitmapString(p1ButtonText, p1Positioning.x - p1ButtonText.size() * 4, p1Positioning.y + p1Positioning.height / 3 + 15);
 	//END OF PLAYER 1'S SPACESHIP:
 
 
-	ofSetColor(255);
 	//PLAYER 2'S SPACESHIP:
 	ofColor p2ButtonColor;
 	ofColor p2ButtonTextColor;
 	std::string p2ButtonText;
-	std::string p2Controls = "CONTROLS: UP and DOWN";
+
+	std::string p2Text = "PLAYER 2";
+	std::string p2Controls = "CONTROLS: UP & DOWN";
+	ofRectangle p2Positioning = ofRectangle(ofGetWindowWidth() - ofGetWindowWidth() / 4, ofGetWindowHeight() / 2 - p2Image.getHeight() / 2, p2Image.getWidth() + 70, p2Image.getHeight() * 2);
+
+	ofSetColor(80);
+	ofDrawRectangle(p2Positioning);
 
 	//draw spaceship graphic and text
-	ofDrawBitmapString("PLAYER 2", ofGetWindowWidth() - ofGetWindowWidth() / 4 - p2Image.getWidth() / 3, p2Image.getHeight() + 10);
-	p2Image.draw(ofGetWindowWidth() - ofGetWindowWidth() / 4 - p2Image.getWidth() / 2, p2Image.getHeight() + 20);
-	ofDrawBitmapString(p2Controls, ofGetWindowWidth() -  ofGetWindowWidth() / 4 - p2Controls.size() * 4, p2Image.getHeight() * 2 + 40);
+	ofSetColor(255);
+	ofDrawBitmapString(p2Text, p2Positioning.x - p2Text.size() * 4, p2Positioning.y - p2Positioning.getHeight() / 2 + 20);
+	ofDrawBitmapString(p2Controls, p2Positioning.x - p2Controls.size() * 4, p2Positioning.y - p2Positioning.getHeight() / 2 + 40);
+	p2Image.draw(p2Positioning.x, p2Positioning.y);
 
 	//decide button's colours and text
 	if (p2Ready) {
@@ -96,14 +108,14 @@ void Title::render() {
 
 	//draw button
 	ofSetColor(p2ButtonColor);
-	ofDrawRectangle(ofGetWindowWidth() - ofGetWindowWidth() / 4 - p2Image.getWidth() / 2, p2Image.getHeight() * 2 + 50, p2Image.getWidth(), 30);
+	ofDrawRectangle(p2Positioning.x, p2Positioning.y + p2Positioning.height / 3 + 10, p1Image.getWidth(), 30);
 	ofSetColor(p2ButtonTextColor);
-	ofDrawBitmapString(p2ButtonText, ofGetWindowWidth() - ofGetWindowWidth() / 4 - p2ButtonText.size() * 4, p2Image.getHeight() * 2 + 70);
+	ofDrawBitmapString(p2ButtonText, p2Positioning.x - p2ButtonText.size() * 4, p2Positioning.y + p2Positioning.height / 3 + 15);
 	//END OF PLAYER 2'S SPACESHIP
 
 
-	ofSetColor(255);
 	//draw instructions
+	ofSetColor(255);
 	std::string instructions = "INSTRUCTIONS: Avoid asteroids and reach\nthe top of the screen to gain points!";
 	ofDrawBitmapString(instructions, (ofGetWindowWidth() / 2) - (instructions.size() * 2), ofGetWindowHeight() - 50);
 }

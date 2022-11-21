@@ -21,7 +21,7 @@ public:
 		this->position = Point{ position.x, position.y};
 
 		//could not get the font to load
-		//myFont.load("cour.tff", 24, true, true, false, 0.3, 0);
+		//myFont.load("cour.tff", 24);
 	}
 
 	void setScore() {
