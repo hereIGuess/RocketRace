@@ -1,42 +1,26 @@
 #pragma once
+#include "point.h"
+#include <ofGraphics.h>
 #include "ofSoundPlayer.h"
 //#include "ofTrueTypeFont.h"
 
 class Score {
 private:
-	int score;
 	Point position;
+	int score;
 
 	//ofTrueTypeFont myFont;
 
 public:
-	Point getPosition() {
-		return position;
-	}
+	Point getPosition();
 
-	int getScore() {
-		return score;
-	}
+	int getScore();
 
-	Score(int score, Point position) {
-		this->score = score;
-		this->position = Point{ position.x, position.y};
+	Score(int score, Point position);
 
-		//could not get the font to load
-		//myFont.load("cour.tff", 24);
-	}
+	void increaseScore();
 
-	void increaseScore() {
-		score++;
-	}
+	void reset();
 
-	void reset() {
-		score = 0;
-	}
-	
-	void render() {
-		ofDrawBitmapString(std::to_string(score), position.x - std::to_string(score).size() * 4, position.y);
-	
-		//myFont.drawString(std::to_string(score), position.x, position.y);
-	}
+	void render();
 };
