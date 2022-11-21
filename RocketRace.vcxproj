@@ -193,6 +193,7 @@
   <ItemGroup>
     <ClInclude Include="map.h" />
     <ClInclude Include="src\asteroid.h" />
+    <ClInclude Include="src\colors.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\point.h" />
     <ClInclude Include="src\rocket.h" />

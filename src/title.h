@@ -1,5 +1,7 @@
 #pragma once
 #include <ofImage.h>
+
+#include "colors.h"
 #include "ofAppRunner.h"
 #include "ofGraphics.h"
 #include "ofSoundPlayer.h"
@@ -24,6 +26,8 @@ private:
 
 	//sound effect
 	ofSoundPlayer ready;
+
+	Colors colors;
 
 public:
 	bool getTitle();
