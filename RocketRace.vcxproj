@@ -181,8 +181,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="map.cpp" />
+    <ClCompile Include="src\asteroid.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\rocket.cpp" />
+    <ClCompile Include="src\score.cpp" />
     <ClCompile Include="src\timer.cpp" />
     <ClCompile Include="src\title.cpp" />
     <ClCompile Include="src\winner.cpp" />
