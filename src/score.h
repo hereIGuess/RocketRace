@@ -1,6 +1,5 @@
 #pragma once
 //#include "ofTrueTypeFont.h"
-#include "point.h"
 
 class Score {
 private:

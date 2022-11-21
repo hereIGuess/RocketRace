@@ -1,6 +1,4 @@
 #pragma once
-#include "ofGraphics.h"
-#include "point.h"
 
 extern Point screen;
 
