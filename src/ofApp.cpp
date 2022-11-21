@@ -5,18 +5,20 @@ void ofApp::setup() {
 	ofSetFrameRate(60);
 	ofSetRectMode(OF_RECTMODE_CENTER);
 
-	menu.load("Sounds/menu.mp3");
-	menu.setLoop(true);
-	menu.play();
+	menuMusic.load("Sounds/menu.mp3");
+	menuMusic.setLoop(true);
+	menuMusic.play();
 
-	background.load("Sounds/background.mp3");
-	background.setLoop(true);
-	background.setVolume(0.5f);
+	gameMusic.load("Sounds/background.mp3");
+	gameMusic.setLoop(true);
+	gameMusic.setVolume(0.5f);
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
+	//only update when title screen is not active
 	if (!titleScreen.getTitle()) {
+		//if the timer has finished, check who won
 		if (timer.getGameState()) {
 			winner.compareScores(player1.getScore(), player2.getScore());
 			return;
@@ -28,12 +30,15 @@ void ofApp::update() {
 		player2.move();
 
 		for (int a = 0; a < asteroids.size(); a++) {
+			//check if asteroid has collided with either player
 			player1.checkCollision(asteroids[a]);
 			player2.checkCollision(asteroids[a]);
 
 			asteroids[a].move();
 
+			//check if the asteroid is off the screen
 			if (asteroids[a].checkForDeletion()) {
+				//if it is, remove it from the array and add a new one
 				asteroids.erase(asteroids.begin() + a);
 
 				Asteroid asteroid = Asteroid();
@@ -60,6 +65,7 @@ void ofApp::draw() {
 			a.render();
 		}
 
+		//set the rectMode to corner for math reasons
 		ofSetRectMode(OF_RECTMODE_CORNER);
 		timer.render();
 
@@ -72,38 +78,44 @@ void ofApp::draw() {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
+	//when the title screen is active...
 	if (titleScreen.getTitle()) {
+		//check if the game should start (both players ready)
 		if (titleScreen.checkGameStart(key)) {
 			timer.reset();
 
+			player1.reset();
+			player2.reset();
+
+			//resize the asteroids array to 0 and add new asteroids
 			asteroids.resize(0);
 			for (int x = 0; x < asteroidsOnScreen; x++) {
 				Asteroid asteroid = Asteroid();
 				asteroids.push_back(asteroid);
 			}
 
-			player1.reset();
-			player2.reset();
-
-			menu.stop();
-			background.play();
+			menuMusic.stop();
+			gameMusic.play();
 		}
 	}
 
+	//if the timer is done, the title isn't active, and a player has pressed SPACE
 	if (timer.getGameState() && !titleScreen.getTitle() && key == 32) {
-		background.stop();
-		menu.play();
+		//change background music and reset the title screen
+		gameMusic.stop();
+		menuMusic.play();
 		titleScreen.reset();
 		return;
 	}
 
+	//move players in correct direction if the correct input is pressed
 	if (key == p1UpButton || key == p1DownButton) player1.direction(key);
-
 	if (key == p2UpButton || key == p2DownButton) player2.direction(key);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+	//check if the player should continue moving
 	player1.checkMoving(key);
 	player2.checkMoving(key);
 }
