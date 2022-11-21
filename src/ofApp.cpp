@@ -18,17 +18,18 @@ void ofApp::setup() {
 void ofApp::update() {
 	if (!titleScreen.getTitle()) {
 		if (timer.getGameState()) {
-			winner = Winner(player1.getScore());
+			winner.compareScores(player1.getScore(), player2.getScore());
 			return;
 		}
 
 		timer.countDown();
 
 		player1.move();
-		//player2.move();
+		player2.move();
 
 		for (int a = 0; a < asteroids.size(); a++) {
 			player1.checkCollision(asteroids[a]);
+			player2.checkCollision(asteroids[a]);
 
 			asteroids[a].move();
 
@@ -53,7 +54,7 @@ void ofApp::draw() {
 
 		ofSetColor(255);
 		player1.render();
-		//player2.render();
+		player2.render();
 
 		for (auto& a : asteroids) {
 			a.render();
@@ -81,7 +82,8 @@ void ofApp::keyPressed(int key) {
 				asteroids.push_back(asteroid);
 			}
 
-			player1.respawnPlayer();
+			player1.reset();
+			player2.reset();
 
 			menu.stop();
 			background.play();
@@ -95,13 +97,13 @@ void ofApp::keyPressed(int key) {
 		return;
 	}
 
-	if (key == player1UpButton || key == player1DownButton) player1.direction(key);
+	if (key == p1UpButton || key == p1DownButton) player1.direction(key);
 
-	//if (key == player2UpButton || key == player2DownButton) player2.direction(key);
+	if (key == p2UpButton || key == p2DownButton) player2.direction(key);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
 	player1.checkMoving(key);
-	//player2.checkMoving(key);
+	player2.checkMoving(key);
 }

@@ -11,6 +11,7 @@ Timer::Timer(int maxTime) {
 }
 
 void Timer::reset() {
+	gameOver = false;
 	currentTime = maxTime;
 	timePassed = 0;
 }

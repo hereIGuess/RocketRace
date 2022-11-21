@@ -2,9 +2,10 @@
 
 bool Title::getTitle() { return title; }
 
-Title::Title(int p1Button) {
+Title::Title(int p1Button, int p2Button) {
 	ready.load("Sounds/ready.mp3");
 	p1ReadyButton = p1Button;
+	p2ReadyButton = p2Button;
 	reset();
 }
 

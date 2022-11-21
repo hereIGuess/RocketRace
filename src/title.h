@@ -19,7 +19,7 @@ private:
 
 	//player 2 variables
 	bool p2Ready;
-	int p2ReadyButton = 57357;	//get these from ofApp.h instead of recreating them here
+	int p2ReadyButton;
 	ofImage p2Image = largeRocket;
 
 	//sound effect
@@ -28,7 +28,7 @@ private:
 public:
 	bool getTitle();
 
-	Title(int p1UpButton);
+	Title(int p1UpButton, int p2UpButton);
 
 	void reset();
 
