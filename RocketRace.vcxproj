@@ -183,6 +183,7 @@
     <ClCompile Include="map.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\timer.cpp" />
     <ClCompile Include="src\title.cpp" />
     <ClCompile Include="src\winner.cpp" />
   </ItemGroup>

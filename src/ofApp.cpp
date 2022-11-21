@@ -8,6 +8,7 @@ void ofApp::setup() {
 	menu.load("Sounds/menu.mp3");
 	menu.setLoop(true);
 	menu.play();
+
 	background.load("Sounds/background.mp3");
 	background.setLoop(true);
 	background.setVolume(0.5f);
@@ -72,7 +73,7 @@ void ofApp::draw() {
 void ofApp::keyPressed(int key) {
 	if (titleScreen.getTitle()) {
 		if (titleScreen.checkGameStart(key)) {
-			timer = Timer();
+			timer.reset();
 
 			asteroids.resize(0);
 			for (int x = 0; x < asteroidsOnScreen; x++) {
@@ -80,7 +81,7 @@ void ofApp::keyPressed(int key) {
 				asteroids.push_back(asteroid);
 			}
 
-			player1 = Rocket(player1UpButton, player1DownButton);
+			player1.respawnPlayer();
 
 			menu.stop();
 			background.play();

@@ -1,42 +1,28 @@
 #pragma once
+#include "ofAppRunner.h"
 #include "ofGraphics.h"
+#include "point.h"
 
 extern Point screen;
 
 class Timer {
 private:
-	int currentTime;
-	int timer = 10;
-	float passedTime = 0;
+	int maxTime; //how long the game will last
+
+	int currentTime; //time left
+	float timePassed; //how much milliseconds have passed
 
 	//could just check if time is 0 but I think a bool is easier to read
 	bool gameOver = false;
 
 public:
-	bool getGameState() {
-		return gameOver;
-	}
+	bool getGameState();
 
-	Timer() {
-		currentTime = timer;
-	}
+	Timer(int maxTime);
 
-	void countDown() {
-		if (gameOver) return;
+	void reset();
 
-		passedTime += ofGetLastFrameTime();
+	void countDown();
 
-		if (passedTime >= 1) {
-			currentTime--;
-			passedTime = 0;
-		}
-
-		if (currentTime == 0) {
-			gameOver = true;
-		}
-	}
-
-	void render() {
-		ofDrawRectangle(screen.x / 2 + 5, (timer - currentTime) * ofGetWindowHeight() / timer, 10,  ofGetWindowHeight() - ((timer - currentTime) * ofGetWindowHeight() / timer));
-	}
+	void render();
 };
