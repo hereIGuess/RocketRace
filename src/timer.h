@@ -1,13 +1,12 @@
 #pragma once
 #include "ofGraphics.h"
-#include "point.h"
 
 extern Point screen;
 
 class Timer {
 private:
 	int currentTime;
-	int timer = 120;
+	int timer = 10;
 	float passedTime = 0;
 
 	//could just check if time is 0 but I think a bool is easier to read

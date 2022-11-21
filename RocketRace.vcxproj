@@ -183,6 +183,7 @@
     <ClCompile Include="map.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\title.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="map.h" />

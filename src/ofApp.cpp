@@ -7,9 +7,7 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
-	if (titleScreen.getTitle()) {
-		titleScreen.update();
-	} else if (!titleScreen.getTitle()) {
+	if (!titleScreen.getTitle()) {
 		if (timer.getGameState()) {
 			winner = Winner(player1.getScore());
 			return;
@@ -79,7 +77,7 @@ void ofApp::keyPressed(int key) {
 	}
 
 	if (timer.getGameState() && !titleScreen.getTitle() && key == 32) {
-		titleScreen = Title();
+		titleScreen.reset();
 		return;
 	}
 

@@ -2,7 +2,6 @@
 #include <string>
 
 #include "ofGraphics.h"
-#include "point.h"
 #include "score.h"
 
 class Winner {
