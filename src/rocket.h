@@ -1,21 +1,19 @@
 #pragma once
 
 #include "asteroid.h"
-#include "ofGraphics.h"
 #include "score.h"
 
-extern Point screen;
+//extern Point screen;
 
 class Rocket {
 private:
 	enum class Direction { up, down, still };
 	Direction movement;
-	ofImage ship;
+	ofImage rocket = ofImage("Images/spaceship.png");
 
 	int up;
 	int down;
 	Score score = Score(0, Point{0, 0});
-	//image sprite;
 
 public:
 	//turn these into getters
@@ -33,7 +31,6 @@ public:
 		this->down = downButton;
 		this->position = { screen.x / 4, screen.y - size / 2 };
 		this->movement = Direction::still;
-		ship.load("Images/spaceship.png");
 
 		this->score = Score(0, Point{ position.x - size / 4, position.y + size * 2});
 	}
@@ -90,8 +87,7 @@ public:
 	}
 
 	void render() {
-		ship.draw(position.x, position.y);
-		//ofDrawRectangle(position.x, position.y, size, size);
+		rocket.draw(position.x, position.y);
 
 		score.render();
 	}

@@ -7,7 +7,7 @@ extern Point screen;
 class Timer {
 private:
 	int currentTime;
-	int timer = 10;
+	int timer = 120;
 	float passedTime = 0;
 
 	//could just check if time is 0 but I think a bool is easier to read
@@ -34,7 +34,6 @@ public:
 
 		if (currentTime == 0) {
 			gameOver = true;
-			std::cout << "gameover";
 		}
 	}
 

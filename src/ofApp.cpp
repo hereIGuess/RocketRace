@@ -78,7 +78,7 @@ void ofApp::keyPressed(int key) {
 		}
 	}
 
-	if (timer.getGameState() && key == 32) {
+	if (timer.getGameState() && !titleScreen.getTitle() && key == 32) {
 		titleScreen = Title();
 		return;
 	}
