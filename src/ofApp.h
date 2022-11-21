@@ -16,6 +16,10 @@ class ofApp : public ofBaseApp{
 		void keyPressed(int key);
 		void keyReleased(int key);
 
+		ofImage smallRocket = ofImage("Images/spaceship.png");
+		ofImage largeRocket = ofImage("Images/spaceship.png");
+
+
 		int player1UpButton = 119;
 		int player1DownButton = 115;
 		Rocket player1 = Rocket(player1UpButton, player1DownButton);
