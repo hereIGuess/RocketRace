@@ -7,7 +7,7 @@ extern Point screen;
 class Timer {
 private:
 	int currentTime;
-	int timer = 60;
+	int timer = 20;
 	float passedTime = 0;
 
 	//could just check if time is 0 but I think a bool is easier to read

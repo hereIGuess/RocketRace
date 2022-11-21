@@ -23,7 +23,6 @@ class ofApp : public ofBaseApp{
 		//int player2UpButton = 57357;
 		//int player2DownButton = 57359;
 
-		//Asteroid asteroid = Asteroid();
 		vector<Asteroid> asteroids;
 		const int& asteroidsOnScreen = 15;
 
