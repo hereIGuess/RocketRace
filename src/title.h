@@ -27,7 +27,7 @@ private:
 	//sound effect
 	ofSoundPlayer ready;
 
-	Colors colors;
+	//Colors colors;
 
 public:
 	bool getTitle();

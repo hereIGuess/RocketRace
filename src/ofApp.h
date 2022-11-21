@@ -21,13 +21,13 @@ class ofApp : public ofBaseApp{
 		//create player1
 		int p1UpButton = 119;
 		int p1DownButton = 115;
-		Colors p1Color = Colors(97, 100);
+		//Colors p1Color = Colors(97, 100);
 		Rocket player1 = Rocket(p1UpButton, p1DownButton, screen.x / 4);
 
 		//create player2
 		int p2UpButton = 57357;
 		int p2DownButton = 57359;
-		Colors p2Color = Colors(57356, 57358);
+		//Colors p2Color = Colors(57356, 57358);
 		Rocket player2 = Rocket(p2UpButton, p2DownButton, screen.x - screen.x / 4);
 
 		//create title screen

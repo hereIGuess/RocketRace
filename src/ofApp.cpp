@@ -81,8 +81,8 @@ void ofApp::keyPressed(int key) {
 	//when the title screen is active...
 	if (titleScreen.getTitle()) {
 		//check if color should change
-		p1Color.checkForColorChange(key);
-		p2Color.checkForColorChange(key);
+		//p1Color.checkForColorChange(key);
+		//p2Color.checkForColorChange(key);
 
 		//check if the game should start (both players ready)
 		if (titleScreen.checkGameStart(key)) {

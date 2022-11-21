@@ -10,7 +10,7 @@ Title::Title(int p1Button, int p2Button) {
 	ready.load("Sounds/ready.mp3");
 	p1ReadyButton = p1Button;
 	p2ReadyButton = p2Button;
-	colors = Colors();
+	//colors = Colors();
 	reset();
 }
 
@@ -132,5 +132,5 @@ void Title::render() {
 	std::string instructions = "INSTRUCTIONS: Avoid asteroids and reach\nthe top of the screen to gain points!";
 	ofDrawBitmapString(instructions, (ofGetWindowWidth() / 2) - (instructions.size() * 2), ofGetWindowHeight() - 50);
 
-	colors.render();
+	//colors.render();
 }
