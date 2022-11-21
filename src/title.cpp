@@ -10,6 +10,7 @@ Title::Title(int p1Button, int p2Button) {
 	ready.load("Sounds/ready.mp3");
 	p1ReadyButton = p1Button;
 	p2ReadyButton = p2Button;
+	//colors = Colors();
 	reset();
 }
 
@@ -51,6 +52,7 @@ void Title::render() {
 	ofDrawBitmapString("ROCKET RACE", ofGetWindowWidth() / 2 - 50, 50);
 
 	//PLAYER 1'S SPACESHIP:
+	ofColor p1Color;
 	ofColor p1ButtonColor;
 	ofColor p1ButtonTextColor;
 	std::string p1ButtonText;
@@ -129,4 +131,6 @@ void Title::render() {
 	ofSetColor(255);
 	std::string instructions = "INSTRUCTIONS: Avoid asteroids and reach\nthe top of the screen to gain points!";
 	ofDrawBitmapString(instructions, (ofGetWindowWidth() / 2) - (instructions.size() * 2), ofGetWindowHeight() - 50);
+
+	//colors.render();
 }
