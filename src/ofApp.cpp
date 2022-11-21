@@ -11,7 +11,6 @@ void ofApp::update() {
 		titleScreen.update();
 	} else if (!titleScreen.getTitle()) {
 		if (timer.getGameState()) {
-			//titleScreen = Title();
 			winner = Winner(player1.getScore());
 			return;
 		}
@@ -68,6 +67,7 @@ void ofApp::keyPressed(int key) {
 	if (titleScreen.getTitle()) {
 		if (titleScreen.checkGameStart(key)) {
 			timer = Timer();
+
 			asteroids.resize(0);
 			for (int x = 0; x < asteroidsOnScreen; x++) {
 				Asteroid asteroid = Asteroid();

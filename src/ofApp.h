@@ -30,5 +30,5 @@ class ofApp : public ofBaseApp{
 
 		Title titleScreen = Title();
 
-		Winner winner = Winner(player1.getScore());
+		Winner winner = Winner();
 };
