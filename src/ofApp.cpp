@@ -4,6 +4,13 @@
 void ofApp::setup() {
 	ofSetFrameRate(60);
 	ofSetRectMode(OF_RECTMODE_CENTER);
+
+	menu.load("Sounds/menu.mp3");
+	menu.setLoop(true);
+	menu.play();
+	background.load("Sounds/background.mp3");
+	background.setLoop(true);
+	background.setVolume(0.5f);
 }
 
 //--------------------------------------------------------------
@@ -47,7 +54,7 @@ void ofApp::draw() {
 		player1.render();
 		//player2.render();
 
-		for (auto a : asteroids) {
+		for (auto& a : asteroids) {
 			a.render();
 		}
 
@@ -74,10 +81,15 @@ void ofApp::keyPressed(int key) {
 			}
 
 			player1 = Rocket(player1UpButton, player1DownButton);
+
+			menu.stop();
+			background.play();
 		}
 	}
 
 	if (timer.getGameState() && !titleScreen.getTitle() && key == 32) {
+		background.stop();
+		menu.play();
 		titleScreen.reset();
 		return;
 	}

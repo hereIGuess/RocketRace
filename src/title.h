@@ -2,6 +2,7 @@
 #include <ofImage.h>
 #include "ofAppRunner.h"
 #include "ofGraphics.h"
+#include "ofSoundPlayer.h"
 
 class Title {
 private:
@@ -20,6 +21,9 @@ private:
 	bool p2Ready;
 	int p2ReadyButton = 57357;	//get these from ofApp.h instead of recreating them here
 	ofImage p2Image = largeRocket;
+
+	//sound effect
+	ofSoundPlayer ready;
 
 public:
 	bool getTitle();

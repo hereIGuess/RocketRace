@@ -3,14 +3,14 @@
 #include "asteroid.h"
 #include "score.h"
 
-//extern Point screen;
+extern Point screen;
 
 class Rocket {
 private:
 	enum class Direction { up, down, still };
 	Direction movement;
 	ofImage rocket = ofImage("Images/spaceship.png");
-
+	ofSoundPlayer crash;
 	int up;
 	int down;
 	Score score = Score(0, Point{0, 0});
@@ -26,13 +26,14 @@ public:
 	}
 
 	Rocket(int upButton, int downButton) {
-		//this->size = size;
-		this->up = upButton;
-		this->down = downButton;
-		this->position = { screen.x / 4, screen.y - size / 2 };
-		this->movement = Direction::still;
+		up = upButton;
+		down = downButton;
+		position = { screen.x / 4, screen.y - size / 2 };
+		movement = Direction::still;
 
-		this->score = Score(0, Point{ position.x - size / 4, position.y + size * 2});
+		score = Score(0, Point{ position.x - size / 4, position.y + size * 2});
+
+		crash.load("Sounds/hit.mp3");
 	}
 
 	void move() {
@@ -66,6 +67,8 @@ public:
 			asteroidPosition.y - asteroid.size / 2 <= position.y + size / 2 &&
 			asteroidPosition.x + asteroid.size / 2 >= position.x - size / 2 &&
 			asteroidPosition.y + asteroid.size / 2 >= position.y - size / 2) {
+
+			crash.play();
 			respawnPlayer();
 		}
 	}

@@ -3,6 +3,7 @@
 bool Title::getTitle() { return title; }
 
 Title::Title(int p1Button) {
+	ready.load("Sounds/ready.mp3");
 	p1ReadyButton = p1Button;
 	reset();
 }
@@ -17,11 +18,13 @@ bool Title::checkGameStart(int key) {
 	//if W is pressed, set ready to the opposite of it's old state
 	if (key == p1ReadyButton) {
 		p1Ready = !p1Ready;
+		ready.play();
 	}
 
 	//if UP is pressed, set ready to the opposite of it's old state
 	if (key == p2ReadyButton) {
 		p2Ready = !p2Ready;
+		ready.play();
 	}
 
 	//if both players are ready,  deactivate title and return true
