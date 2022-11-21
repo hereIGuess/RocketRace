@@ -20,8 +20,13 @@ public:
 		if (player1Ready) title = false;
 	}
 
-	void checkGameStart(int key) {
-		if (key = 119) player1Ready = true;
+	bool checkGameStart(int key) {
+		if (key = 119) {
+			player1Ready = true;
+			return true;
+		}
+
+		return false;
 	}
 
 	void render() {

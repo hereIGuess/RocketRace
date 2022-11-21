@@ -3,22 +3,16 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
 	ofSetFrameRate(60);
-
-	for (int x = 0; x < asteroidsOnScreen; x++) {
-		Asteroid asteroid = Asteroid();
-		asteroids.push_back(asteroid);
-	}
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
 	if (titleScreen.getTitle()) {
 		titleScreen.update();
-
-		winner = Winner(player1.getScore());
 	} else if (!titleScreen.getTitle()) {
 		if (timer.getGameState()) {
-			titleScreen = Title();
+			//titleScreen = Title();
+			winner = Winner(player1.getScore());
 			return;
 		}
 
@@ -44,11 +38,8 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-
 	if (titleScreen.getTitle()) {
 		titleScreen.render();
-
-		winner.render();
 	}
 	else if (!titleScreen.getTitle()) {
 		ofSetRectMode(OF_RECTMODE_CENTER);
@@ -65,13 +56,31 @@ void ofApp::draw() {
 
 		ofSetRectMode(OF_RECTMODE_CORNER);
 		timer.render();
+
+		if (timer.getGameState()) {
+			winner.render();
+		}
 	}
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
 	if (titleScreen.getTitle()) {
-		titleScreen.checkGameStart(key);
+		if (titleScreen.checkGameStart(key)) {
+			timer = Timer();
+			asteroids.resize(0);
+			for (int x = 0; x < asteroidsOnScreen; x++) {
+				Asteroid asteroid = Asteroid();
+				asteroids.push_back(asteroid);
+			}
+
+			player1 = Rocket(player1UpButton, player1DownButton);
+		}
+	}
+
+	if (timer.getGameState() && key == 32) {
+		titleScreen = Title();
+		return;
 	}
 
 	if (key == player1UpButton || key == player1DownButton) player1.direction(key);
