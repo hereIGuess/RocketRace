@@ -39,7 +39,7 @@ class ofApp : public ofBaseApp{
 		const int& asteroidsOnScreen = 15;
 
 		//create timer
-		Timer timer = Timer();
+		Timer timer = Timer(120);
 
 		//create winner
 		Winner winner = Winner();
