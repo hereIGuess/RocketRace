@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ofSoundPlayer.h"
 #include "ofMain.h"
 #include "Point.h"
 #include "title.h"
@@ -42,4 +43,8 @@ class ofApp : public ofBaseApp{
 
 		//create winner
 		Winner winner = Winner();
+
+		ofSoundPlayer menu;
+		ofSoundPlayer background;
+		ofSoundPlayer win;
 };

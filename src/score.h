@@ -1,10 +1,12 @@
 #pragma once
+#include "ofSoundPlayer.h"
 //#include "ofTrueTypeFont.h"
 
 class Score {
 private:
 	int score;
 	Point position;
+
 	//ofTrueTypeFont myFont;
 
 public:

@@ -7,12 +7,12 @@ extern Point screen;
 
 class Winner {
 private:
-	Point position;
+	Point position = Point{0, 0};
 	std::string winnerText;
 	std::string continueText = "Press SPACE to return to title screen";
 
 public:
-	Winner();;
+	Winner();
 
 	Winner(Score score1);
 
