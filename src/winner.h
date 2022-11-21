@@ -14,9 +14,7 @@ private:
 public:
 	Winner();
 
-	Winner(Score score1);
-
-	void compareScores(Score score1);
+	void compareScores(Score score1, Score score2);
 
 	void render();
 };

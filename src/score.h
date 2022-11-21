@@ -26,12 +26,16 @@ public:
 		//myFont.load("cour.tff", 24);
 	}
 
-	void setScore() {
+	void increaseScore() {
 		score++;
+	}
+
+	void reset() {
+		score = 0;
 	}
 	
 	void render() {
-		ofDrawBitmapString(std::to_string(score), position.x, position.y);
+		ofDrawBitmapString(std::to_string(score), position.x - std::to_string(score).size() * 4, position.y);
 	
 		//myFont.drawString(std::to_string(score), position.x, position.y);
 	}

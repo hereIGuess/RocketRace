@@ -23,23 +23,26 @@ class ofApp : public ofBaseApp{
 		ofImage largeRocket = ofImage("Images/spaceship.png");
 
 		//create player1
-		int player1UpButton = 119;
-		int player1DownButton = 115;
-		Rocket player1 = Rocket(player1UpButton, player1DownButton);
+		int p1UpButton = 119;
+		int p1DownButton = 115;
+		int p1XSpawnPosition = screen.x / 4;
+		Rocket player1 = Rocket(p1UpButton, p1DownButton, p1XSpawnPosition);
 
 		//create player2
-		//int player2UpButton = 57357;
-		//int player2DownButton = 57359;
+		int p2UpButton = 57357;
+		int p2DownButton = 57359;
+		int p2XSpawnPosition = screen.x - screen.x / 4;
+		Rocket player2 = Rocket(p2UpButton, p2DownButton, p2XSpawnPosition);
 
 		//create title screen
-		Title titleScreen = Title(player1UpButton);
+		Title titleScreen = Title(p1UpButton, p2UpButton);
 
 		//create asteroids
 		vector<Asteroid> asteroids;
 		const int& asteroidsOnScreen = 15;
 
 		//create timer
-		Timer timer = Timer(120);
+		Timer timer = Timer(10);
 
 		//create winner
 		Winner winner = Winner();

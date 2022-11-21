@@ -18,20 +18,19 @@ private:
 public:
 	//turn these into getters
 	int size = 15;
-	//int yPos;
 	Point position;
 
 	Score getScore() {
 		return score;
 	}
 
-	Rocket(int upButton, int downButton) {
+	Rocket(int upButton, int downButton, int xPos) {
 		up = upButton;
 		down = downButton;
-		position = { screen.x / 4, screen.y - size / 2 };
+		position = { xPos, screen.y - size / 2 };
 		movement = Direction::still;
 
-		score = Score(0, Point{ position.x - size / 4, position.y + size * 2});
+		score = Score(0, Point{ position.x, position.y + size * 2});
 
 		crash.load("Sounds/hit.mp3");
 	}
@@ -53,11 +52,16 @@ public:
 
 	void increaseScore() {
 		respawnPlayer();
-		score.setScore();
+		score.increaseScore();
 	}
 
 	void respawnPlayer() {
 		position.y = screen.y - size / 2;
+	}
+
+	void reset() {
+		respawnPlayer();
+		score.reset();
 	}
 
 	void checkCollision(Asteroid asteroid) {
