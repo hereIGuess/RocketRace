@@ -1,58 +1,28 @@
 #pragma once
+#include "ofImage.h"
+#include "point.h"
 
 extern Point screen;
 
 class Asteroid {
 private:
-	int direction;
-	int speed;
-	Point position;
-	int randomYPos;
 	ofImage meteor;
 
-public:
+	Point position;
 	int size = 10;
+	int direction;
+	int speed;
 
-	Point getPosition() {
-		return position;
-	}
+public:
+	Point getPosition();
 
-	Asteroid() {
-		meteor.load("Images/meteor.png");
+	int getSize();
 
-		do {
-			direction = floor(ofRandom(-1, 2));
-		} while (direction == 0);
+	Asteroid();
 
-		speed = ofRandom(1, 8);
+	void move();
 
-		speed *= direction;
+	bool checkForDeletion();
 
-		randomYPos = floor(ofRandom(10, screen.y - 40));
-
-		if (direction == -1) {
-			position = Point{screen.x + size, randomYPos};
-		} else if (direction == 1) {
-			position = Point{ 0 - size, randomYPos };
-		}
-	}
-
-	void move() {
-		position.x += speed;
-	}
-
-	bool checkForDeletion() {
-		if (direction == -1) {
-			if (position.x < 0 - size * 2) return true;
-		} else if (direction == 1) {
-			if (position.x > screen.x + size * 2) return true;
-		}
-
-		return false;
-	}
-
-	void render() {
-		meteor.draw(position.x, position.y);
-		//ofDrawRectangle(position.x, position.y, size, size);
-	}
+	void render();
 };
