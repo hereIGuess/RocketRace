@@ -1,26 +1,30 @@
 #include "winner.h"
 
+//winner contructor: literally does nothing
 Winner::Winner() { }
 
-void Winner::compareScores(Score score1, Score score2) {
+//compares the two player scores and checks whose won
+//then it sets the winner text and position to the correct values
+void Winner::compareScores(Score p1Score, Score p2Score) {
 	//instead of 1 insert player 2's score
-	if (score1.getScore() > score2.getScore()) {
+	if (p1Score.getScore() > p2Score.getScore()) {
 		//player 1 has won
 		winnerText = "Player 1 wins!";
-		position = Point{ score1.getPosition().x - int(winnerText.size() * 4), score1.getPosition().y + 30 };
+		position = Point{ p1Score.getPosition().x - int(winnerText.size() * 4), p1Score.getPosition().y + 30 };
 	}
-	else if (score1.getScore() < score2.getScore()) {
+	else if (p1Score.getScore() < p2Score.getScore()) {
 		//player 2 has won
 		winnerText = "Player 2 wins!";
-		position = Point{ score2.getPosition().x - int(winnerText.size() * 4), score2.getPosition().y + 30 };
+		position = Point{ p2Score.getPosition().x - int(winnerText.size() * 4), p2Score.getPosition().y + 30 };
 	}
-	else if (score1.getScore() == score2.getScore()) {
+	else if (p1Score.getScore() == p2Score.getScore()) {
 		//tie
 		winnerText = "It was a tie!";
-		position = Point{ screen.x / 2 - int(winnerText.size() * 4), score2.getPosition().y + 30 };
+		position = Point{ screen.x / 2 - int(winnerText.size() * 4), p1Score.getPosition().y + 30 };
 	}
 }
 
+//draws winner and continue text
 void Winner::render() {
 	ofDrawBitmapString(winnerText, position.x, position.y);
 

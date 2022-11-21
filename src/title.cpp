@@ -1,7 +1,11 @@
 #include "title.h"
 
-bool Title::getTitle() { return title; }
+//gets title
+bool Title::getTitle() {
+	return title;
+}
 
+//title constructor: sets up ready buttons, resets the title screen, and loads the ready sound
 Title::Title(int p1Button, int p2Button) {
 	ready.load("Sounds/ready.mp3");
 	p1ReadyButton = p1Button;
@@ -9,12 +13,14 @@ Title::Title(int p1Button, int p2Button) {
 	reset();
 }
 
+//resets the title to its default values
 void Title::reset() {
 	title = true;
 	p1Ready = false;
 	p2Ready = false;
 }
 
+//checks if both players are ready and if they are, deactivates the title screen
 bool Title::checkGameStart(int key) {
 	//if W is pressed, set ready to the opposite of it's old state
 	if (key == p1ReadyButton) {
@@ -38,6 +44,7 @@ bool Title::checkGameStart(int key) {
 	return false;
 }
 
+//draws the title screen
 void Title::render() {
 	//draw title
 	ofSetColor(255);

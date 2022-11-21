@@ -27,9 +27,9 @@ public:
 
 	Rocket(int upButton, int downButton, int xPos);
 
-	void increaseScore();
-
 	void respawnPlayer();
+
+	void increaseScore();
 
 	void reset();
 

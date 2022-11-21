@@ -6,7 +6,7 @@ extern Point screen;
 
 class Asteroid {
 private:
-	ofImage meteor;
+	ofImage meteor = ofImage("Images/meteor.png");
 
 	Point position;
 	int size = 10;

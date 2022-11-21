@@ -19,6 +19,15 @@
     <ClCompile Include="src\timer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\asteroid.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\score.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rocket.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

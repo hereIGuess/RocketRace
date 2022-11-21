@@ -1,16 +1,17 @@
 #include "asteroid.h"
 
+//gets asteroid's position
 Point Asteroid::getPosition() {
 	return position;
 }
 
+//gets asteroid's size
 int Asteroid::getSize() {
 	return size;
 }
 
+//asteroid constructor: finds a random direction, speed, and y position, then sets the asteroid's position
 Asteroid::Asteroid() {
-	meteor.load("Images/meteor.png");
-
 	//find what direction the asteroid should go (left or right)
 	do {
 		direction = floor(ofRandom(-1, 2));
@@ -30,10 +31,12 @@ Asteroid::Asteroid() {
 	}
 }
 
+//move the asteroid
 void Asteroid::move() {
 	position.x += speed;
 }
 
+//checks if the asteroid is off screen
 bool Asteroid::checkForDeletion() {
 	//check what direction the asteroid is going and if it is out of bounds return true
 	if (direction == -1) {
@@ -45,6 +48,7 @@ bool Asteroid::checkForDeletion() {
 	return false;
 }
 
+//draws the asteroid
 void Asteroid::render() {
 	meteor.draw(position.x, position.y);
 }

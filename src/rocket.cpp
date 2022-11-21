@@ -1,9 +1,11 @@
 #include "rocket.h"
 
+//gets score
 Score Rocket::getScore() {
 	return score;
 }
 
+//rocket constructor: sets up, down, position, movement, score, and loads crash sound
 Rocket::Rocket(int upButton, int downButton, int xPos) {
 	up = upButton;
 	down = downButton;
@@ -16,20 +18,24 @@ Rocket::Rocket(int upButton, int downButton, int xPos) {
 	score = Score(0, Point{ position.x, position.y + size * 2});
 }
 
+//respawns the player at spawn position
+void Rocket::respawnPlayer() {
+	position.y = screen.y - size / 2;
+}
+
+//respawns the player and increases the score
 void Rocket::increaseScore() {
 	respawnPlayer();
 	score.increaseScore();
 }
 
-void Rocket::respawnPlayer() {
-	position.y = screen.y - size / 2;
-}
-
+//respawns player and resets score
 void Rocket::reset() {
 	respawnPlayer();
 	score.reset();
 }
 
+//moves player in the correct direction and checks if player has reached the top
 void Rocket::move() {
 	if (movement == Direction::still) return;
 
@@ -45,6 +51,7 @@ void Rocket::move() {
 	}
 }
 
+//checks if the player should continue moving
 void Rocket::checkMoving(int key) {
 	if (key == up || key == down) {
 		movement = Direction::still;
@@ -52,6 +59,7 @@ void Rocket::checkMoving(int key) {
 	}
 }
 
+//checks what direction player should be moving in
 void Rocket::direction(int key) {
 	if (keyHeld) return;
 
@@ -68,6 +76,8 @@ void Rocket::direction(int key) {
 	}
 }
 
+//checks if the player has collided with an asteroid
+//if they have it respawns the player and plays the crash sound
 void Rocket::checkCollision(Asteroid asteroid) {
 	Point asteroidPosition = asteroid.getPosition();
 
@@ -81,6 +91,7 @@ void Rocket::checkCollision(Asteroid asteroid) {
 	}
 }
 
+//draws the rocket and calls for the score to draw
 void Rocket::render() {
 	rocket.draw(position.x, position.y);
 

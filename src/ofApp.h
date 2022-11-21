@@ -18,10 +18,6 @@ class ofApp : public ofBaseApp{
 		void keyPressed(int key);
 		void keyReleased(int key);
 
-		//import images
-		ofImage smallRocket = ofImage("Images/spaceship.png");
-		ofImage largeRocket = ofImage("Images/spaceship.png");
-
 		//create player1
 		int p1UpButton = 119;
 		int p1DownButton = 115;
